@@ -18,7 +18,7 @@ const userSchema = Schema({
         validate: addValidation(/\S+@\S+\.\S+/, 'is not a valid email')
     },
     profile: String,
-    google_id: Number,
+    google_id: String,
     quastions: [{
         type: ID,
         ref: 'Quastion'

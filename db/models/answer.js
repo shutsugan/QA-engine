@@ -9,7 +9,7 @@ const answerSchema = Schema({
         type: String,
         required: [true, 'The answer is required']
     },
-    anwered: {
+    answered: {
         type: Boolean,
         default: false
     },
