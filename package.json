@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "npm run test",
+    "test": "jest",
     "dev": "nodemon --exec babel-node index.js",
     "build": "NODE_ENV=PRODUCTION babel src -d dist --copy-files",
     "serve": "NODE_ENV=production node dist/index.js"
@@ -13,7 +13,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chai": "^4.2.0",
+    "easygraphql-tester": "^5.1.5",
     "graphql-yoga": "^1.17.4",
+    "jest": "^24.8.0",
     "mongoose": "^5.5.14"
   },
   "devDependencies": {
