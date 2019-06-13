@@ -1,0 +1,62 @@
+type Query {
+  user(id: String!): User!
+  hello(name: String): String!
+}
+
+input signupInput {
+  name: String!
+  email: String!
+  profile: String!
+  google_id: String!
+}
+
+input createQuationInput {
+  title: String!
+  quastion: String!
+  author: String!
+}
+
+input updateQuationInput {
+  title: String
+  quastion: String
+}
+
+type Mutation {
+  signup(input: signupInput): User!
+  createQuation(input: createQuationInput): Quastion!
+  updateQuation(id: String!, input: updateQuationInput): Quastion!
+}
+
+type User {
+  id: ID!
+  name: String!
+  email: String!
+  profile: String
+  google_id: String!
+  quastions: [Quastion!]!
+}
+
+type Quastion {
+  id: ID!
+  title: String!
+  quastion: String!
+  author: User!
+  answers: [Answer!]!
+  votes: [Vote!]!
+}
+
+type Answer {
+  id: ID!
+  answer: String!
+  answered: Boolean!
+  quastion: Quastion!
+  author: User!
+  votes: [Vote!]!
+}
+
+type Vote {
+  id: ID!
+  author: User!
+  quastion: Quastion!
+  answer: Answer!
+}
