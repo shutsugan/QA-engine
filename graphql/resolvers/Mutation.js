@@ -1,8 +1,9 @@
 import { signup } from './User';
-import { createQuation, updateQuation } from './Quastion';
+import { createQuation, updateQuation, deleteQuation } from './Quastion';
 
 export default {
   signup,
   createQuation,
-  updateQuation
+  updateQuation,
+  deleteQuation
 };
