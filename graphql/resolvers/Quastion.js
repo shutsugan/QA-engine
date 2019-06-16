@@ -1,4 +1,4 @@
-import { updateById } from './utils';
+import { updateById, populateById } from './utils';
 
 const quastions = async (_, { skip = 0, limit = 10, published = true }, { models }) => {
   const { Quastion } = models;
@@ -68,26 +68,28 @@ export {
 };
 
 const author = async ({ id }, _, { models }) => {
-  const quastion = models.Quastion
-    .findById(id)
-    .populate('author');
+  const { Quastion } = models;
+  const { author } = await populateById(Quastion, id, 'author', 'Author not found');
 
-  if (!quastion) throw new Error('Author not found');
+  return author;
+};
 
-  return quastion.author;
+const answers = async ({ id }, _, { models }) => {
+  const { Quastion } = models;
+  const { answers } = await populateById(Quastion, id, 'answers', 'Answers not found');
+
+  return answers;
 };
 
 const votes = async ({ id }, _, { models }) => {
-  const quastion = models.Quastion
-    .findById(id)
-    .populate('votes');
+  const { Quastion } = models;
+  const { votes } = await populateById(Quastion, id, 'votes', 'Votes not found');
 
-  if (!quastion) throw new Error('Votes not found');
-
-  return quastion.votes;
+  return votes;
 };
 
 export default {
   author,
+  answers,
   votes
 };
