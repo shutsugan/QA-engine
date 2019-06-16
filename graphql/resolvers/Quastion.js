@@ -1,35 +1,39 @@
-const createQuation = async (_, { author, input }, { models }) => {
-  const { Quastion } = models;
-  try {
-    const quastion = await Quastion({ author, ...input });
+import { checkById, updateById } from './utils';
 
-    await Quastion.updateOne({ _id: author }, { $push: { quastions: quastion._id } });
+const createQuation = async (_, { input }, { models }) => {
+  const { Quastion, User } = models;
+
+  try {
+    const quastion = await Quastion({ ...input });
+    const ops = { $push: { quastions: quastion._id } };
+
     await quastion.save();
+    await updateById(User, input.author, ops, 'User was not updated');
+    
     return quastion;
   } catch (err) {
-    throw new Error('Quastion was not created');
+    throw new Error(err);
   }
 };
 
 const updateQuation = async (_, { id, input }, { models }) => {
   const { Quastion } = models;
+  const ops = { $set: input };
 
-  const quationExist = await Quastion.findById(id);
-  if (!quationExist) throw new Error('Quastion does not exist');
+  return updateById(Quastion, id, ops, 'Quastion was not updated');
+};
 
-  try {
-    const quastion = await Quastion.findByIdAndUpdate(id, { $set: input });
-    const updatedQuastion = await Quastion.findById(id);
+const deleteQuation = async (_, { id }, { models }) => {
+  const { Quastion } = models;
+  const ops = { $set: { published: false } };
 
-    return updatedQuastion;
-  } catch (err) {
-    throw new Error('Quastion was not updated');
-  }
+  return updateById(Quastion, id, ops, 'Quastion was not deleted');
 };
 
 export {
   createQuation,
-  updateQuation
+  updateQuation,
+  deleteQuation
 };
 
 export default {};

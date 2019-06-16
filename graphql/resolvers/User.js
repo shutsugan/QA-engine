@@ -15,7 +15,6 @@ const user = async (_, { id }, { models }) => {
 const login = async (_, __, { models }) => {};
 
 const signup = async (_, { input }, { models }) => {
-  console.log(input);
   try {
     const user = await models.User.create({...input});
     await user.save();
