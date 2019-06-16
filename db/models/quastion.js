@@ -14,6 +14,10 @@ const quastionSchema = Schema({
         type: String,
         required: [true, 'The Quastion is required'],
     },
+    published: {
+      type: Boolean,
+      default: true
+    },
     author: {
         type: ID,
         ref: 'User'
