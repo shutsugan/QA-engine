@@ -4,8 +4,10 @@ export const checkById = async (model, id, message) => {
 };
 
 export const updateById = async (model, id, ops, message) => {
+  checkById(model, id, message);
+
   try {
-    const instance = await model.findByIdAndUpdate(id, ops);
+    await model.findByIdAndUpdate(id, ops);
     const updatedInstance = await model.findById(id);
 
     return updatedInstance;
