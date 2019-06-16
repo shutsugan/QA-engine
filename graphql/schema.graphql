@@ -19,6 +19,7 @@ input createQuationInput {
 input updateQuationInput {
   title: String
   quastion: String
+  published: Boolean
 }
 
 type Mutation {
@@ -41,6 +42,7 @@ type Quastion {
   id: ID!
   title: String!
   quastion: String!
+  published: Boolean!
   author: User!
   answers: [Answer!]!
   votes: [Vote!]!
