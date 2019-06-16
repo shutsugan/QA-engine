@@ -1,5 +1,7 @@
 type Query {
   user(id: String!): User!
+  quastions(skip: Int, limit: Int, published: Boolean): Quastions!
+  quastion(id: String!): Quastion!
   hello(name: String): String!
 }
 
@@ -62,4 +64,9 @@ type Vote {
   author: User!
   quastion: Quastion!
   answer: Answer!
+}
+
+type Quastions {
+  quastions: [Quastion!]!
+  count: Int!
 }
