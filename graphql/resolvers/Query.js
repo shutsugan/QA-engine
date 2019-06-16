@@ -5,5 +5,4 @@ export default {
   user,
   quastions,
   quastion,
-  hello: (_, { name }) => `Hello ${name || 'World'}`
 };
