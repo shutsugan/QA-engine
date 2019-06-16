@@ -14,4 +14,14 @@ export const updateById = async (model, id, ops, message) => {
   } catch (err) {
     throw new Error(err);
   }
+};
+
+export const populateById = async (model, id, populate, message) => {
+  const instance = await model
+    .findById(id)
+    .populate(populate);
+
+  if (!instance) throw new Error(message);
+
+  return instance;
 }
