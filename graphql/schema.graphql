@@ -2,7 +2,6 @@ type Query {
   user(id: String!): User!
   quastions(skip: Int, limit: Int, published: Boolean): Quastions!
   quastion(id: String!): Quastion!
-  hello(name: String): String!
 }
 
 input signupInput {
