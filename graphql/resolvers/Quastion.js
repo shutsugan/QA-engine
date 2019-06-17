@@ -4,13 +4,12 @@ const quastions = async (_, { skip = 0, limit = 10, published = true }, { models
   const { Quastion } = models;
   const options = { published };
 
+  const count = await Quastion.countDocuments(options);
   const quastions = await Quastion
     .find(options, null, { skip, limit })
     .populate('author answers votes')
     .sort({ createdAt: 1 });
   
-  const count = await Quastion.countDocuments(options);
-
   if (!quastions) throw new Error('Quastions do not exist');
 
   return {
