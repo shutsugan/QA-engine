@@ -1,3 +1,5 @@
+import { populateById } from "./utils";
+
 const user = async (_, { id }, { models }) => {
   try {
     const user = await models.User
@@ -31,4 +33,21 @@ export {
   login,
 };
 
-export default {};
+const quastions = async ({ id }, _, { models }) => {
+  const { User } = models;
+  const { quastions } = await populateById(User, id, 'quastions', 'Quastions not found');
+
+  return quastions;
+};
+
+const answers = async ({ id }, _, { models }) => {
+  const { User } = models;
+  const { answers } = await populateById(User, id, 'answers', 'Answers not found');
+
+  return answers;
+};
+
+export default {
+  quastions,
+  answers
+};
