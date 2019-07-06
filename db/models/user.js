@@ -22,7 +22,11 @@ const userSchema = Schema({
     quastions: [{
         type: ID,
         ref: 'Quastion'
-    }]
+    }],
+    answers: [{
+        type: ID,
+        ref: 'Answer'
+    }],
 }, timestamps);
 
 const User = mongoose.model('User', userSchema);
