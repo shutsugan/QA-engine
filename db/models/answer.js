@@ -13,6 +13,10 @@ const answerSchema = Schema({
         type: Boolean,
         default: false
     },
+    published: {
+        type: Boolean,
+        default: true
+    },
     quastion: {
         type: ID,
         ref: 'Quastion'
