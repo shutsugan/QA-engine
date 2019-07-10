@@ -4,6 +4,8 @@ type Query {
   quastion(id: String!): Quastion!
   answers(skip: Int, limit: Int, published: Boolean): Answers!
   answer(id: String!): Answer!
+  answerVote(author: String!, answer: String!): [Vote!]!
+  quastionVote(author: String! quastion: String!): [Vote!]!
 }
 
 input signupInput {
@@ -39,14 +41,22 @@ input updateAnswerInput {
   published: Boolean
 }
 
+input createVoteInput {
+  author: String!
+  answer: String
+  quastion: String
+}
+
 type Mutation {
   signup(input: signupInput): User!
   createQuation(input: createQuationInput): Quastion!
-  updateQuation(id: String!, input: updateQuationInput): Quastion!
+  updateQuation(id: String! input: updateQuationInput): Quastion!
   deleteQuation(id: String!): Quastion!
   createAnswer(input: createAnwerInput): Answer!
   updateAnswer(id: String! input: updateAnswerInput): Answer!
   deleteAnswer(id: String!): Answer!
+  createVote(input: createVoteInput): Vote!
+  deleteVote(id: String! published: Boolean): Vote!
 }
 
 type User {
@@ -81,6 +91,7 @@ type Answer {
 
 type Vote {
   id: ID!
+  published: Boolean!
   author: User!
   quastion: Quastion!
   answer: Answer!
