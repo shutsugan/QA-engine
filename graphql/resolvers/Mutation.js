@@ -1,6 +1,7 @@
 import { signup } from './User';
 import { createQuation, updateQuation, deleteQuation } from './Quastion';
 import { createAnswer, updateAnswer, deleteAnswer } from './Answer';
+import { createVote, deleteVote } from './Vote';
 
 export default {
   signup,
@@ -9,5 +10,7 @@ export default {
   deleteQuation,
   createAnswer,
   updateAnswer,
-  deleteAnswer
+  deleteAnswer,
+  createVote,
+  deleteVote
 };
