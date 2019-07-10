@@ -27,6 +27,10 @@ const userSchema = Schema({
         type: ID,
         ref: 'Answer'
     }],
+    votes: [{
+        type: ID,
+        ref: 'Vote'
+    }]
 }, timestamps);
 
 const User = mongoose.model('User', userSchema);
