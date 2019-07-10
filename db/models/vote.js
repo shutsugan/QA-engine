@@ -5,6 +5,10 @@ import { timestamps } from './utils';
 const Schema = mongoose.Schema;
 const ID = Schema.Types.ObjectId;
 const voteSchema = Schema({
+    published: {
+        type: Boolean,
+        default: true
+    },
     author: {
         type: ID,
         ref: 'User'
@@ -15,7 +19,7 @@ const voteSchema = Schema({
     },
     answer: {
         type: ID,
-        ref: 'answer'
+        ref: 'Answer'
     }
 }, timestamps);
 
