@@ -17,7 +17,7 @@
     "easygraphql-tester": "^5.1.5",
     "graphql-yoga": "^1.17.4",
     "jest": "^24.8.0",
-    "mongoose": "^5.5.14"
+    "mongoose": "^5.7.5"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
